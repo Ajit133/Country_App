@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Countries from "./Components/Countries";
-
+import './App.css'
 const url = "https://restcountries.com/v3.1/all";
 const App = () =>{
        const[isLoading,setIsLoading] = useState(true)
