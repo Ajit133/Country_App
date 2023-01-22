@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Countries from "./Components/Countries";
 import './App.css'
+// import UserContext from "./Contexts/UserContext";
 const url = "https://restcountries.com/v3.1/all";
 const App = () =>{
        const[isLoading,setIsLoading] = useState(true)
@@ -14,14 +15,18 @@ const App = () =>{
           setCountries(data);
           setIsLoading(false);
           setError(null);
-          console.log(countries)
+          
         }catch(error){
           setIsLoading(false);
           setError(error);
         }
        }
-
-
+      // const user = useContext(UserContext)
+      // console.log(user)
+   
+       const RemoveItems = (name)=>{
+           alert(name)
+       }
 
        useEffect(()=>{
           fetchData(url)
@@ -29,7 +34,7 @@ const App = () =>{
        return(<>
              {isLoading && <h2>Loading....</h2>}
              {error && <h2>{error.message}</h2>}
-             {countries && <Countries countries={countries} />}
+             {countries && <Countries RemoveItems={RemoveItems} countries={countries} />}
              </>
        )
 }

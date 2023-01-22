@@ -1,7 +1,14 @@
-import style from "./Style/Country.module.css"
-const Country = ({country})=>{
+import style from "./Style/Country.module.css";
+// import App from "../App";
+// import UserContext from "../Contexts/UserContext";
+
+
+const Country = ({country,RemoveItems})=>{
+    
     const {name,flags,capital,population,area} = country
-    console.log(name)
+    const handleButton = (name)=>{
+        RemoveItems(name)
+    }
     return(
             <article className={style.country}>
                 <div>
@@ -10,6 +17,9 @@ const Country = ({country})=>{
                     <h3>Population: {population}</h3>
                     <h3>Capital: {capital}</h3>
                     <h3>Area: {area}</h3>
+                    <button className={style.btn} onClick={()=>{handleButton(name.common)}}>Remove Country</button>
+                    {/* <UserContext.Provider value={{handleButton}} ><App /></UserContext.Provider> */}
+
                 </div>
             </article>
     )
